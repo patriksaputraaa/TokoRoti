@@ -9,10 +9,9 @@
 </head>
 
 <body>
-    <?= include("connection.php") ?>
-
+    <?php include("connection.php") ?>
     <header style="background-color:goldenrod; display: block">
-        <h1 align="center" style="margin: 0px;">Toko Roti Oemar Bakery</h1>
+        <h1 align="center" style="margin: 2px;">Toko Roti Oemar Bakery</h1>
         <p align="center" style="margin: 1px;">Nikmatnya mendunia</p>
         <br>
     </header>

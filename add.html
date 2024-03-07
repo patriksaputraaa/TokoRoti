@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <table>
-        <caption>Tambah Data Roti Baru</caption>
-        <tr>
-            <td>Nama Roti</td>
-            <td><input type="text" name="nama_roti"></td>
-        </tr>
-        <tr>
-            <td>Diameter</td>
-            <td><select name="diameter">
-                <option value="10">10 cm</option>
-                <option value="10">15 cm</option>
-                <option value="10">20 cm</option>
-                <option value="10">25 cm</option>
-            </select></td>
-        </tr>
-        <tr>
-            <td>Nama Roti</td>
-            <td><select name="warna">
-                <option value="Putih" selected>Putih</option>
-                <option value="Kuning">Kuning</option>
-                <option value="Cream">Cream</option>
-                <option value="Pink">Pink</option>
-            </select></td>
-        </tr>
-        <tr>
-            <td>Harga</td>
-            <td><input type="text" name="harga"></td>
-        </tr>
-        <tr>
-            <td>Farga</td>
-            <td><input type="text" name="foto"></td>
-        </tr>
-    </table>
+    <form action="save.php" method="post" enctype="multipart/form-data">
+        <table border="1">
+            <caption>Tambah Data Roti Baru</caption>
+            <tr>
+                <td>Nama Roti</td>
+                <td><input type="text" name="nama_roti"></td>
+            </tr>
+            <tr>
+                <td>Diameter</td>
+                <td><select name="diameter">
+                        <option value="10">10 cm</option>
+                        <option value="10">15 cm</option>
+                        <option value="10">20 cm</option>
+                        <option value="10">25 cm</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Nama Roti</td>
+                <td><select name="warna">
+                        <option value="Putih" selected>Putih</option>
+                        <option value="Kuning">Kuning</option>
+                        <option value="Cream">Cream</option>
+                        <option value="Pink">Pink</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Harga</td>
+                <td><input type="text" name="harga"></td>
+            </tr>
+            <tr>
+                <td>Foto</td>
+                <td><input type="file" name="foto"></td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </th>
+            </tr>
+        </table>
+    </form>
 </body>
+
 </html>

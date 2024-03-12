@@ -23,36 +23,42 @@
         <p class="display-6" align="center" style="margin: 1px;">Nikmatnya mendoenia</p>
         <br>
     </header>
-    <button type="button" style="text-align: left; margin: 5px" onclick="document.location='add.html'">Tambah Data</button>
+    <button type="button" style="text-align: right; margin: 5px" onclick="document.location='add.html'">Tambah Data</button>
     <div class="container-fluid" style="text-align: center; background-color:azure">
-    <br>
+        <br>
         <table border="1" style="margin: auto" class="table table-striped" id="tabel">
             <thead>
                 <tr>
-                    <th>Gambar</th>
-                    <th>Deskripsi</th>
+                    <th style="text-align: center;">Gambar</th>
+                    <th style="text-align: center;">Deskripsi</th>
+                    <th style="text-align: center;">Option</th>
                 </tr>
             </thead>
             <tbody>
-            <?php
-            $table = $conn->query("SELECT * FROM roti");
-            while ($row = $table->fetch_assoc()) {
-                extract($row);
-            ?>
-                <tr>
-                    <td><img src="assets\images\<?=$foto?>" alt="roti-sesal" width="150px" class="rounded mx-auto d-block"></td>
-                    <td>
-                        <ul style="list-style-type: none; padding-left: 2px; margin-left: 10px; margin-right: 15px">
-                            <li><?=$nama_roti?></li>
-                            <li>Diameter: <?=$diameter?> cm</li>
-                            <li>Warna: <?=$warna?></li>
-                            <li><?=$harga?></li>
-                        </ul>
-                    </td>
-                </tr>
-            <?php
-            }
-            ?>
+                <?php
+                $table = $conn->query("SELECT * FROM roti");
+                while ($row = $table->fetch_assoc()) {
+                    extract($row);
+                ?>
+                    <tr>
+                        <td><img src="assets\images\<?= $foto ?>" width="100px" class="rounded mx-auto d-block"></td>
+                        <td>
+                            <ul style="list-style-type: none; padding-left: 2px; margin-left: 10px; margin-right: 15px">
+                                <li><?= $nama_roti ?></li>
+                                <li>Diameter: <?= $diameter ?> cm</li>
+                                <li>Warna: <?= $warna ?></li>
+                                <li><?= $harga ?></li>
+                            </ul>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <div style="text-align: center; ">
+                                <input type="button" value="Update"> <input type="button" value="Delete">
+                            </div>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
             </tbody>
         </table>
     </div>

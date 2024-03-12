@@ -23,6 +23,7 @@
         <p class="display-6" align="center" style="margin: 1px;">Nikmatnya mendoenia</p>
         <br>
     </header>
+    <button type="button" style="text-align: left; margin: 5px" onclick="document.location='add.html'">Tambah Data</button>
     <div class="container-fluid" style="text-align: center; background-color:azure">
     <br>
         <table border="1" style="margin: auto" class="table table-striped" id="tabel">

@@ -11,14 +11,27 @@
     <?php
     include("connection.php");
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $LOCATION = "assets/images/";
         extract($_POST);
-        $sql = "UPDATE roti SET nama_roti='$nama_roti', diameter='$diameter', warna='$warna', harga='$harga' WHERE id='$id'";
+        $file = $_FILES['foto'];
+        $fileName = $file['name'];
+        $fileTempPath = $file['tmp_name'];
+        $fileFormat = pathinfo($fileName, PATHINFO_EXTENSION);
+        echo "$fileTempPath";
+        if (is_uploaded_file($fileTempPath)) {
+            $newFileName = strtolower(str_replace(' ', '', $nama_roti)) . '.' . $fileFormat;
+            move_uploaded_file($fileTempPath, $LOCATION.$newFileName);
+            $sql = "UPDATE roti SET nama_roti='$nama_roti', diameter=$diameter, warna='$warna', foto='$newFileName', harga=$harga WHERE id= $id";
+        } else {
+            $sql = "UPDATE roti SET nama_roti='$nama_roti', diameter=$diameter, warna='$warna', harga=$harga WHERE id= $id";
+        }
+
         if ($conn->query($sql) === TRUE) {
             $conn->close();
             header("Location: index.php");
             exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: ".$sql."<br>".$conn->error;
         }
     } else {
         $id = $_GET["id"];
@@ -28,7 +41,8 @@
     }
     ?>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?= $id ?>">
         <table border="1">
             <caption>Update Data Roti</caption>
             <tr>
@@ -58,6 +72,12 @@
             <tr>
                 <td>Harga</td>
                 <td><input type="text" name="harga" value="<?= $harga ?>"></td>
+            </tr>
+            <tr>
+                <td>Foto</td>
+                <td>
+                    <input type="file" name="foto">
+                </td>
             </tr>
             <tr>
                 <th colspan="2">
